@@ -59,26 +59,55 @@ JAVA
 3] Create a new file Dockerfile
 4] Inside Dockerfile
 FROM openjdk
-WORKDIR /app COPY ./app RUN javac Sample.java CMD ["java","Sample"]
+WORKDIR /app
+COPY . /app
+RUN javac Sample.java
+CMD ["java", "Sample"]
+
 5] Then create a Java file as Sample.java
-Public class Sample { Public Static void main(String[] args) { System.out.println("Test"); } }
+public class Sample {
+    public static void main(String[] args) {
+        System.out.println("Test");
+    }
+}
+
 6] Then in CMD: Type
 javac Sample.java
 java Sample.java
-7] docker build -t name1
-8] in docker desktop got to images there you will find name1 click on run -> the java program will run
+or in vs terminal type
+7] docker build -t name
+8] in docker desktop got to images there you will find name1 click on run -> the java program will run or execute docker run java-app
+
 HTML
-9] Name The the Docker and the Java file replaced with the HTML
+new folder
+new docker file and html file
+
 10] Docker file:
 FROM httpd:latest
 COPY index.html /usr/local/apache2/htdocs/
+
 11] Then create a HTML file
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Docker HTML Test</title>
+</head>
+<body>
+    <h1>Hello from Dockerized HTML Page!</h1>
+</body>
+</html>
+
 12] go to the Terminal
 docker build -t name2
 docker run -d -P 8001:80 name2
 
+-d → runs in background
+-p 8001:80 → maps local port 8001 to container’s port 80
+
+to check visit: http://localhost:8001/
+
 Program 4 (B2)
 1] Continue with the B1 program and then add the two Comand in the terminal
-docker tag hi: latest username/hi:v1
-docker tag push username/hi:v1 
-docker pull username/dzivi
+docker tag hi:latest username/hi:v1 //tag=hi
+docker push username/hi:v1 
+docker pull username/hi:vi
