@@ -52,6 +52,13 @@ git commit -m "merged host1 and host2"
 29] git diff
 30] git clone "repo url" main
 
+Create Pull Request
+Go to GitHub → your repo → Compare & Pull Request → Create Pull Request
+
+Fork a public repository
+Go to a GitHub public repo (example: https://github.com/<teacher-repo>/sample.git)
+Click Fork → your GitHub account will now have a copy.
+
 Program 3 (B1)
 JAVA
 1] Create a folder
@@ -111,3 +118,50 @@ Program 4 (B2)
 docker tag hi:latest username/hi:v1 //tag=hi
 docker push username/hi:v1 
 docker pull username/hi:vi
+
+🐬 B2 — Dockerize MySQL Database and demonstrate client-server
+🎯 Objective
+
+To demonstrate MySQL server and client model using Docker containers.
+
+🧠 Steps
+
+Pull MySQL image
+
+docker pull mysql:latest
+
+
+Run MySQL container
+
+docker run --name mysql-server -e MYSQL_ROOT_PASSWORD=root -d mysql:latest
+
+
+Verify running container
+
+docker ps
+
+
+Run MySQL client
+
+docker exec -it mysql-server mysql -uroot -p
+
+
+(Password: root)
+
+Inside MySQL shell
+
+CREATE DATABASE demo;
+USE demo;
+CREATE TABLE student (id INT, name VARCHAR(20));
+INSERT INTO student VALUES (1, 'Vishal'), (2, 'Shenoy');
+SELECT * FROM student;
+
+
+✅ Output: Shows data entered in table.
+
+Exit MySQL shell
+
+exit
+
+
+✅ Result: MySQL container created, and client-server communication established using Docker.
